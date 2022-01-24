@@ -1,0 +1,28 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#preloader-main-wrapper {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(255, 246, 233);
+}
+
+#preloader-inner-wrapper {
+  width: 50%;
+  height: 5%;
+  border: brown 1px solid;
+  position: absolute;
+  z-index: 100;
+}
+
+#preloader-progress-bar {
+  height: 100%;
+  width: 50%;
+  background-color: white;
+}
