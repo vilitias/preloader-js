@@ -1,27 +1,27 @@
-class Preloader {
+class PreloaderProgressBar {
     isVisible = false;
     isInfinite = false;
 
-    show = () => {
+    show = (type: "sputnik"|"ria") => {
         const wrapper = document.createElement("div");
-        wrapper.id = "preloader-main-wrapper";  
+        wrapper.id = "preloader-main-screen";  
         document.body.append(wrapper);
 
         const inner = document.createElement("div");
-        inner.id = "preloader-inner-wrapper"
+        inner.id = `preloader-progress-bar-${type}`
         wrapper.append(inner);
 
         const progressBar = document.createElement("div");
-        progressBar.id = "preloader-progress-bar";
+        progressBar.id = `preloader-progress-bar-inner-${type}`;
         inner.append(progressBar);
     };
     hide = () => {
-        const preloader = document.querySelector("#preloader-main-wrapper");
+        const preloader = document.querySelector("#preloader-main-screen");
         preloader?.remove()
     };
 
     setProgress = (percentage: number) => {
-        const progressBar = document.querySelector<HTMLDivElement>("#preloader-progress-bar")
+        const progressBar = document.querySelector<HTMLDivElement>("#preloader-progress-bar-inner")
         if (!progressBar) {
             return
         } 
@@ -29,7 +29,32 @@ class Preloader {
     }
  }
 
- const preloader = new Preloader();
- preloader.show()
+class PreloaderInfinite {
+    show = (type: "sputnik"|"ria") => {
+        const wrapper = document.createElement("div");
+        wrapper.id = "preloader-main-screen";  
+        document.body.append(wrapper);
+
+        const outerCircle = document.createElement("div");
+        outerCircle.id = `preloader-outer-circle-${type}`
+        wrapper.append(outerCircle);
+
+        const middleCircle = document.createElement("div");
+        middleCircle.id = `preloader-middle-circle-${type}`;
+        outerCircle.append(middleCircle);
+
+        const innerCircle = document.createElement("div");
+        innerCircle.id = `preloader-inner-circle-${type}`
+        outerCircle.append(innerCircle)
+    };
+    hide = () => {
+        const preloader = document.querySelector("#preloader-main-screen");
+        preloader?.remove()
+    };
+
+}
+
+ const preloader = new PreloaderProgressBar();
+ preloader.show("sputnik")
 //  preloader.hide()
-preloader.setProgress(25);
+// preloader.setProgress(25);

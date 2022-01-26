@@ -3,26 +3,119 @@ body {
   padding: 0;
 }
 
-#preloader-main-wrapper {
+#preloader-main-screen {
   width: 100vw;
   height: 100vh;
   position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(255, 246, 233);
+  background-color: #cfdeec;
 }
 
-#preloader-inner-wrapper {
-  width: 50%;
-  height: 5%;
-  border: brown 1px solid;
+#preloader-progress-bar-sputnik {
+  width: 44%;
+  height: 1%;
+  box-shadow: 0px 0px 0px 5px white;
+  border-radius: 5px;
   position: absolute;
   z-index: 100;
+  background-color: black;
 }
 
-#preloader-progress-bar {
+#preloader-progress-bar-inner-sputnik {
   height: 100%;
   width: 50%;
+  background-color: #ff9600;
+  border-radius: 5px;
+}
+#preloader-progress-bar-ria {
+  width: 44%;
+  height: 1%;
+  box-shadow: 0px 0px 0px 5px white;
+  border-radius: 5px;
+  position: absolute;
+  z-index: 100;
+  background-color: #3520ce;
+}
+
+#preloader-progress-bar-inner-ria {
+  height: 100%;
+  width: 50%;
+  background-color: #010f40;
+  border-radius: 5px;
+}
+
+#preloader-outer-circle-ria {
+  width: 50px;
+  height: 50px;
   background-color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#preloader-outer-circle-sputnik {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#preloader-middle-circle-ria {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  background: conic-gradient(
+    from 0deg at 50% 50%,
+    #3520ce 0deg,
+    #010f40 360deg
+  );
+
+  animation: spin 1s infinite linear;
+}
+#preloader-middle-circle-sputnik {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  background: conic-gradient(
+    from 0deg at 50% 50%,
+    #ff9600 0deg,
+    #a83d01 360deg
+  );
+
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#preloader-inner-circle-ria {
+  position: absolute;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(180deg, #3520ce 22.87%, #010f40 100%);
+}
+#preloader-inner-circle-sputnik {
+  position: absolute;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(180deg, #ff9600 22.87%, #a83d01 100%);
 }

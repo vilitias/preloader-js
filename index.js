@@ -1,33 +1,56 @@
-var Preloader = /** @class */ (function () {
-    function Preloader() {
+var PreloaderProgressBar = /** @class */ (function () {
+    function PreloaderProgressBar() {
         this.isVisible = false;
         this.isInfinite = false;
-        this.show = function () {
+        this.show = function (type) {
             var wrapper = document.createElement("div");
-            wrapper.id = "preloader-main-wrapper";
+            wrapper.id = "preloader-main-screen";
             document.body.append(wrapper);
             var inner = document.createElement("div");
-            inner.id = "preloader-inner-wrapper";
+            inner.id = "preloader-progress-bar-".concat(type);
             wrapper.append(inner);
             var progressBar = document.createElement("div");
-            progressBar.id = "preloader-progress-bar";
+            progressBar.id = "preloader-progress-bar-inner-".concat(type);
             inner.append(progressBar);
         };
         this.hide = function () {
-            var preloader = document.querySelector("#preloader-main-wrapper");
+            var preloader = document.querySelector("#preloader-main-screen");
             preloader === null || preloader === void 0 ? void 0 : preloader.remove();
         };
-        this.progress = function (percentage) {
-            var progressBar = document.querySelector("#preloader-progress-bar");
+        this.setProgress = function (percentage) {
+            var progressBar = document.querySelector("#preloader-progress-bar-inner");
             if (!progressBar) {
                 return;
             }
             progressBar.style.width = "".concat(percentage, "%");
         };
     }
-    return Preloader;
+    return PreloaderProgressBar;
 }());
-var preloader = new Preloader();
-preloader.show();
+var PreloaderInfinite = /** @class */ (function () {
+    function PreloaderInfinite() {
+        this.show = function (type) {
+            var wrapper = document.createElement("div");
+            wrapper.id = "preloader-main-screen";
+            document.body.append(wrapper);
+            var outerCircle = document.createElement("div");
+            outerCircle.id = "preloader-outer-circle-".concat(type);
+            wrapper.append(outerCircle);
+            var middleCircle = document.createElement("div");
+            middleCircle.id = "preloader-middle-circle-".concat(type);
+            outerCircle.append(middleCircle);
+            var innerCircle = document.createElement("div");
+            innerCircle.id = "preloader-inner-circle-".concat(type);
+            outerCircle.append(innerCircle);
+        };
+        this.hide = function () {
+            var preloader = document.querySelector("#preloader-main-screen");
+            preloader === null || preloader === void 0 ? void 0 : preloader.remove();
+        };
+    }
+    return PreloaderInfinite;
+}());
+var preloader = new PreloaderProgressBar();
+preloader.show("sputnik");
 //  preloader.hide()
-preloader.progress(25);
+// preloader.setProgress(25);
